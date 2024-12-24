@@ -12,6 +12,7 @@
     "@auth/prisma-adapter": "^1.0.1",
     "@prisma/client": "^6.1.0",
     "@supabase/supabase-js": "^2.47.10",
+    "bufferutil": "^4.0.8",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "firebase": "^11.1.0",
@@ -21,7 +22,8 @@
     "react-dom": "18.2.0",
     "react-quill": "^2.0.0",
     "swr": "^2.2.2",
-    "undici": "^7.2.0"
+    "undici": "^7.2.0",
+    "utf-8-validate": "^6.0.5"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.25.9",

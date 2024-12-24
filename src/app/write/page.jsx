@@ -6,13 +6,7 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
-import { app } from "@/utils/firebase";
+import { supabase } from "@/utils/supabase"; // Import your Supabase client
 import ReactQuill from "react-quill";
 
 const WritePage = () => {
@@ -27,35 +21,20 @@ const WritePage = () => {
   const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
-    const storage = getStorage(app);
-    const upload = () => {
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
+    const upload = async () => {
+      const fileName = `${Date.now()}_${file.name}`;
+      const { data, error } = await supabase.storage
+        .from("uploads") // Use the name of your Supabase storage bucket
+        .upload(fileName, file);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-          }
-        },
-        (error) => {},
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setMedia(downloadURL);
-          });
-        }
-      );
+      if (error) {
+        console.error("File upload error:", error.message);
+      } else {
+        const { data: publicUrlData } = supabase.storage
+          .from("uploads")
+          .getPublicUrl(fileName);
+        setMedia(publicUrlData.publicUrl); // Store the public URL of the uploaded file
+      }
     };
 
     file && upload();
@@ -85,7 +64,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "style", //If not selected, choose the general category
+        catSlug: catSlug || "style", // If not selected, choose the general category
       }),
     });
 
