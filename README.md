@@ -103,8 +103,25 @@ npm install
 ### Step 3: Configure the Environment
 Create a `.env.local` file in the root directory and add the required environment variables (if using Supabase or other integrations):
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-NEXT_PUBLIC_SUPABASE_KEY=your-supabase-key
+
+GOOGLE_ID=
+GOOGLE_SECRET=
+
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET= your-secret
+
+
+DATABASE_URL="your mongodb database url"
+
+FIREBASE="  "
+
+
+
+
+NEXT_PUBLIC_SUPABASE_URL=https://---------.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY="..-----"
+
 ```
 
 ### Step 4: Run the Development Server
