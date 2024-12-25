@@ -82,8 +82,6 @@ A blog allows you to:
 - Share insights and solutions.
 - Contribute to open-source and technical communities.
 
-### 5. **Impressive for Higher Education Applications**
-Admissions committees at top universities like Harvard and MIT value candidates who demonstrate creativity, initiative, and expertise. A custom-built blog platform hosted on GitHub reflects your dedication and technical prowess.
 
 ## Setting Up the Blog Platform
 
