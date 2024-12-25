@@ -1,8 +1,11 @@
+![image](https://github.com/user-attachments/assets/7b7e7394-9c14-4547-bdb0-bb561b6b4846)
 
 
 # Blog Deployment Documentation
 
-Welcome to the detailed documentation for the blog platform hosted on my GitHub repository: [83Gh0st/blog-deploy](https://github.com/83Gh0st/blog-deploy.git). This repository contains all the source code and instructions necessary to deploy and run a personal blog platform.
+Welcome to the detailed documentation for the blog platform hosted on my GitHub repository: 
+[83Gh0st/blog-deploy](https://github.com/83Gh0st/blog-deploy.git). 
+This repository contains all the source code and instructions necessary to deploy and run a personal blog platform.
 
 ## Repository Overview
 
